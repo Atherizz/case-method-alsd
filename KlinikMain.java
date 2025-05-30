@@ -3,8 +3,10 @@ import java.util.*;
 public class KlinikMain {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Queue<Pasien> antrian = new LinkedList<>();
-        List<Pasien> riwayat = new ArrayList<>();
+
+        System.out.print("Masukkan jumlah antrian maksimal : ");
+        int max = input.nextInt();
+        AntrianPasien antrian = new AntrianPasien(max);
         int pilihan;
 
         do {
@@ -29,7 +31,7 @@ public class KlinikMain {
                     String keluhan = input.nextLine();
 
                     Pasien pasien = new Pasien(nama, nik, keluhan);
-                    antrian.add(pasien);
+                    antrian.tambahAntrian(pasien);
                     System.out.println(">> Pasien masuk ke dalam antrian.");
                     break;
 
@@ -38,35 +40,23 @@ public class KlinikMain {
                         System.out.println(">> Antrian kosong.");
                     } else {
                         System.out.println(">> Daftar Antrian:");
-                        for (Pasien p : antrian) {
-                            System.out.println("- " + p);
-                        }
+                        antrian.tampilkanSemua();
                     }
                     break;
 
                 case 3:
                     if (!antrian.isEmpty()) {
-                        Pasien dilayani = antrian.poll();
-                        riwayat.add(dilayani);
+                        Pasien dilayani = antrian.layaniPasien();
                         System.out.println(">> Melayani pasien: " + dilayani.nama);
                     } else {
                         System.out.println(">> Tidak ada pasien dalam antrian.");
                     }
                     break;
-
                 case 4:
-                    System.out.println(">> Sisa antrian: " + antrian.size());
+                    System.out.println(">> Sisa antrian: " + antrian.getJumlahAntrian());
                     break;
 
                 case 5:
-                    if (riwayat.isEmpty()) {
-                        System.out.println(">> Belum ada riwayat transaksi.");
-                    } else {
-                        System.out.println(">> Riwayat Transaksi:");
-                        for (Pasien p : riwayat) {
-                            System.out.println("- " + p);
-                        }
-                    }
                     break;
 
                 case 0:
