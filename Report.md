@@ -5,7 +5,7 @@
 |         |  Nayla Akas Oktavia (244107020038) / 21 |
 |         |  Savero Athallah Hardiana Putra (244107020116) / 25 |
 | Kelas | TI - 1H |
-| Repository | [link] () |
+| Repository | [link] (https://github.com/Atherizz/case-method-alsd) |
 # case-method-alsd
 Membuat sistem antrian pasien di klinik dokter.
 
