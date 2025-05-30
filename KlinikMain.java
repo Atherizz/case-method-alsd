@@ -7,6 +7,7 @@ public class KlinikMain {
         System.out.print("Masukkan jumlah antrian maksimal : ");
         int max = input.nextInt();
         AntrianPasien antrian = new AntrianPasien(max);
+        RiwayatAntrian riwayat = new RiwayatAntrian();
         int pilihan;
 
         do {
@@ -48,6 +49,16 @@ public class KlinikMain {
                     if (!antrian.isEmpty()) {
                         Pasien dilayani = antrian.layaniPasien();
                         System.out.println(">> Melayani pasien: " + dilayani.nama);
+                        System.out.print("Masukkan ID Dokter: ");
+                        String idDokter = input.next();
+                        System.out.print("Masukkan Nama Dokter: ");
+                        String namaDokter = input.next();
+                        System.out.print("Masukkan Durasi layanan (jam): ");
+                        int durasi = input.nextInt();
+                        Dokter dokter = new Dokter(idDokter, namaDokter);
+                        TransaksiLayanan riwayatPasien = new TransaksiLayanan(dilayani, dokter, durasi);
+                        riwayat.addTransaction(riwayatPasien);
+                        System.out.println("Pasien telah dilayani, transaksi berhasil dicatat");
                     } else {
                         System.out.println(">> Tidak ada pasien dalam antrian.");
                     }
@@ -55,8 +66,9 @@ public class KlinikMain {
                 case 4:
                     System.out.println(">> Sisa antrian: " + antrian.getJumlahAntrian());
                     break;
-
                 case 5:
+                    System.out.println("Daftar Transaksi");
+                    riwayat.displayTransactions();
                     break;
 
                 case 0:

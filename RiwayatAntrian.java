@@ -10,20 +10,23 @@ class Node {
     }
 }
 
-class DoubleLinkedList {
+class RiwayatAntrian {
     private Node head;
     private Node tail;
 
-    public DoubleLinkedList() {
+    public RiwayatAntrian() {
         this.head = null;
         this.tail = null;
     }
 
+    public boolean isEmpty () {
+        return head == null;
+    }
+
     public void addTransaction(TransaksiLayanan data) {
         Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
+        if (isEmpty()) {
+            head = tail = newNode;
         } else {
             tail.next = newNode;
             newNode.prev = tail;
@@ -33,9 +36,12 @@ class DoubleLinkedList {
 
     public void displayTransactions() {
         Node current = head;
+        if (isEmpty()) {
+            System.out.println("Data kosong!");
+            return;
+        }
         while (current != null) {
-            TransaksiLayanan transaksi = (TransaksiLayanan) current.data;
-            transaksi.tampilkanInformasi();
+            current.data.tampilkanInformasi();
             current = current.next;
         }
   }
