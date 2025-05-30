@@ -11,6 +11,13 @@ public class TransaksiLayanan {
         this.biaya = hitungBiaya();
     }
 
+    public void tampilkanInformasi(){
+        System.out.println("Pasien  : " + pasien);
+        System.out.println("Dokter  : " + dokter);
+        System.out.println("Durasi Layanan  : " + durasiLayanan);
+        System.out.println("Biaya   : " + hitungBiaya());
+    }
+
     public int hitungBiaya() {
         int tarifPerJam = 50000;
         return durasiLayanan * tarifPerJam;
