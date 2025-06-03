@@ -24,6 +24,7 @@ public class KlinikMain {
 
             switch (pilihan) {
                 case 1:
+                    if (!antrian.isFull()) {
                     System.out.print("Nama Pasien: ");
                     String nama = input.nextLine();
                     System.out.print("NIK: ");
@@ -34,6 +35,9 @@ public class KlinikMain {
                     Pasien pasien = new Pasien(nama, nik, keluhan);
                     antrian.tambahAntrian(pasien);
                     System.out.println(">> Pasien masuk ke dalam antrian.");
+                } else {
+                    System.out.println("antrian penuh!");
+                }
                     break;
 
                 case 2:
